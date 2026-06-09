@@ -1,0 +1,127 @@
+/* Fanta-Defence Global Styling System */
+
+:root {
+  /* Color Palette */
+  --bg-main: #060907;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #0d281a 0%, #060907 80%);
+  
+  --panel-bg: rgba(16, 24, 20, 0.65);
+  --panel-bg-hover: rgba(22, 35, 28, 0.8);
+  --panel-border: rgba(16, 185, 129, 0.12);
+  --panel-border-hover: rgba(16, 185, 129, 0.25);
+  --panel-border-gold: rgba(245, 158, 11, 0.25);
+  
+  --accent-green: #10b981;
+  --accent-green-glow: rgba(16, 185, 129, 0.4);
+  --accent-green-dark: #065f46;
+  --accent-neon: #00ff87;
+  
+  --accent-gold: #fbbf24;
+  --accent-gold-glow: rgba(251, 191, 36, 0.3);
+  --accent-gold-dark: #b45309;
+  
+  --accent-red: #ef4444;
+  --accent-red-glow: rgba(239, 68, 68, 0.3);
+  
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --text-green: #34d399;
+  
+  --font-display: 'Outfit', 'Inter', -apple-system, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
+  --font-body: 'Inter', -apple-system, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Shadow & Glows */
+  --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 20px -4px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 12px 40px -10px rgba(0, 0, 0, 0.9);
+  --glow-green: 0 0 20px rgba(16, 185, 129, 0.2);
+  --glow-gold: 0 0 25px rgba(251, 191, 36, 0.25);
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: #111a14;
+  border: 2px solid var(--bg-main);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1a2c21;
+}
+
+/* Common Interactive Elements */
+a, button {
+  font-family: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Utility Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.1); }
+  50% { box-shadow: 0 0 25px rgba(16, 185, 129, 0.3); }
+}
+
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--transition-normal) forwards;
+}
+
+.animate-glow-pulse {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 4s infinite ease-in-out;
+}
+
+.animate-spin-slow {
+  animation: rotateSlow 20s infinite linear;
+}
