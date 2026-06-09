@@ -23,6 +23,7 @@ export class App {
 
   // Referral Calculator State
   userName = signal<string>('');
+  userNickname = signal<string>('');
   userType = signal<'veteran' | 'new'>('new');
   hasReferrer = signal<boolean>(false);
   referrerName = signal<string>('');
@@ -94,12 +95,14 @@ export class App {
 
   emailBody = computed<string>(() => {
     const name = this.userName().trim() || '[Tuo Nome e Cognome]';
+    const nickname = this.userNickname().trim() || '[Tuo Nickname su Fantacalcio.it]';
     const typeStr = this.userType() === 'new' ? 'Nuovo Iscritto' : 'Veterano';
     
     let body = `Ciao Fanta-Defenders! ⚽️\n\n`;
     body += `Vorrei iscrivermi alla prossima stagione del Fanta-Defence (2026/27).\n\n`;
     body += `Ecco i miei dati:\n`;
     body += `- Nome e Cognome: ${name} (${typeStr})\n`;
+    body += `- Nickname su Fantacalcio.it: ${nickname}\n`;
     
     if (this.userType() === 'new' && this.hasReferrer() && this.referrerName().trim() !== '') {
       body += `- Referral (mi ha invitato): ${this.referrerName().trim()}\n`;
@@ -126,7 +129,7 @@ export class App {
   emailMailto = computed<string>(() => {
     const subjectEncoded = encodeURIComponent(this.emailSubject());
     const bodyEncoded = encodeURIComponent(this.emailBody());
-    return `mailto:info@fanta-defence.it?subject=${subjectEncoded}&body=${bodyEncoded}`;
+    return `mailto:fanta.defence@gmail.com?subject=${subjectEncoded}&body=${bodyEncoded}`;
   });
 
   copyEmailText() {

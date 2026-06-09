@@ -149,7 +149,7 @@
           </p>
           <div class="cup-info-grid">
             <div class="cup-info-item">📅 <strong>Inizio:</strong> 10 giornate dalla fine del campionato</div>
-            <div class="cup-info-item">👥 <strong>Partecipanti:</strong> Tutte le 39 squadre</div>
+            <div class="cup-info-item">👥 <strong>Partecipanti:</strong> Tutte le squadre</div>
             <div class="cup-info-item">📊 <strong>Formato:</strong> Stesso format del campionato (punti totali)</div>
             <div class="cup-info-item">🎁 <strong>Premio:</strong> 50€ in buoni acquisto al 1° classificato</div>
           </div>
@@ -396,6 +396,18 @@
           </div>
 
           <div class="form-group">
+            <label class="form-label" for="user-nickname-input">Nickname su Fantacalcio.it</label>
+            <input 
+              type="text" 
+              id="user-nickname-input" 
+              class="input-text" 
+              placeholder="Es. SuperMario99"
+              [ngModel]="userNickname()" 
+              (ngModelChange)="userNickname.set($event)"
+            />
+          </div>
+
+          <div class="form-group">
             <label class="form-label">Hai già partecipato al Fanta-Defence in passato?</label>
             <div class="btn-toggle-group">
               <button 
@@ -525,7 +537,7 @@
               </a>
             </div>
             <span class="text-muted" style="display:block; font-size:0.75rem; text-align:center; margin-top:0.5rem;">
-              Il destinatario predefinito è info@fanta-defence.it
+              Il destinatario predefinito è fanta.defence@gmail.com
             </span>
           </div>
         </div>
