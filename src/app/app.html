@@ -17,10 +17,17 @@
           <p>Stagione 2026/27</p>
         </div>
       </div>
+
+      <!-- Hamburger Menu Button (visible on mobile only) -->
+      <button class="menu-toggle" (click)="isMenuOpen.set(!isMenuOpen())" [class.open]="isMenuOpen()" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
     </div>
 
-    <!-- Navigation tabs -->
-    <nav class="app-nav">
+    <!-- Desktop Navigation tabs -->
+    <nav class="app-nav desktop-nav">
       <div class="nav-tabs">
         <button 
           class="nav-btn" 
@@ -42,6 +49,30 @@
         </button>
       </div>
     </nav>
+
+    <!-- Mobile Navigation menu (visible only on mobile when menu is open) -->
+    <div class="mobile-nav" [class.open]="isMenuOpen()">
+      <div class="mobile-nav-tabs">
+        <button 
+          class="mobile-nav-btn" 
+          [class.active]="activeTab() === 'home'" 
+          (click)="setTab('home')">
+          🏆 Home
+        </button>
+        <button 
+          class="mobile-nav-btn" 
+          [class.active]="activeTab() === 'regole'" 
+          (click)="setTab('regole')">
+          📋 Regolamento
+        </button>
+        <button 
+          class="mobile-nav-btn" 
+          [class.active]="activeTab() === 'iscrizione'" 
+          (click)="setTab('iscrizione')">
+          🤝 Iscrizione & Promo
+        </button>
+      </div>
+    </div>
   </header>
 
   <!-- Main Content Areas -->
@@ -107,26 +138,20 @@
       </div>
 
       <!-- Defender-Cup Featured Banner -->
-      <div class="glass-panel gold-themed" style="border-color: var(--accent-neon); margin-bottom: 2rem; background: radial-gradient(circle at 100% 0%, rgba(0, 255, 135, 0.05) 0%, rgba(0, 0, 0, 0.3) 100%);">
-        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-          <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-            <span style="background: var(--accent-green-dark); color: var(--accent-neon); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;">Novità 🚀</span>
-            <h3 style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; color: #fff; margin: 0;">La Defender-Cup!</h3>
+      <div class="glass-panel gold-themed cup-banner">
+        <div class="cup-banner-content">
+          <div class="cup-banner-badge-container">
+            <span class="cup-banner-badge">Novità 🚀</span>
+            <h3 class="cup-banner-title">La Defender-Cup!</h3>
           </div>
-          <p class="text-secondary" style="font-size: 0.9rem; line-height: 1.45;">
+          <p class="text-secondary cup-banner-desc">
             Per dare a tutti la possibilità di farsi valere anche quando il campionato è compromesso, annunciamo l'introduzione della <strong>Defender-Cup</strong>!
           </p>
-          <div style="display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-top: 0.5rem; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.75rem;">
-            <div style="display: grid; grid-template-columns: 1fr; gap: 0.5rem;">
-              <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-                <div style="flex: 1; min-width: 200px;">📅 <strong>Inizio:</strong> 10 giornate dalla fine del campionato</div>
-                <div style="flex: 1; min-width: 200px;">👥 <strong>Partecipanti:</strong> Tutte le 39 squadre</div>
-              </div>
-              <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-                <div style="flex: 1; min-width: 200px;">📊 <strong>Formato:</strong> Stesso format del campionato (punti totali)</div>
-                <div style="flex: 1; min-width: 200px;">🎁 <strong>Premio:</strong> 50€ in buoni acquisto al 1° classificato</div>
-              </div>
-            </div>
+          <div class="cup-info-grid">
+            <div class="cup-info-item">📅 <strong>Inizio:</strong> 10 giornate dalla fine del campionato</div>
+            <div class="cup-info-item">👥 <strong>Partecipanti:</strong> Tutte le 39 squadre</div>
+            <div class="cup-info-item">📊 <strong>Formato:</strong> Stesso format del campionato (punti totali)</div>
+            <div class="cup-info-item">🎁 <strong>Premio:</strong> 50€ in buoni acquisto al 1° classificato</div>
           </div>
         </div>
       </div>
@@ -135,24 +160,24 @@
       <div class="rules-grid-2">
         
         <!-- Modalità di Gioco & Nome Squadra -->
-        <div class="glass-panel" style="margin-bottom: 0;">
-          <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--accent-neon); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
-            🎮 Modalità di Gioco & Squadre
+        <div class="glass-panel">
+          <h3 class="rules-card-title">
+            <span>🎮 Modalità di Gioco & Squadre</span>
           </h3>
-          <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem;">
-            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem;">
+          <div class="rules-list">
+            <div class="rules-flex-row">
               <span class="text-secondary">Tipo Lega:</span>
               <strong>Listone</strong>
             </div>
-            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem;">
+            <div class="rules-flex-row">
               <span class="text-secondary">Budget Iniziale:</span>
               <strong class="text-green">300 Fanta-milioni</strong>
             </div>
-            <div>
-              <span class="text-secondary" style="display: block; margin-bottom: 0.5rem;">Vincolo Nome Squadra:</span>
-              <div style="background: rgba(0, 0, 0, 0.25); padding: 0.75rem 1rem; border-radius: 8px; border-left: 3px solid var(--accent-green); line-height: 1.4; font-size: 0.85rem;">
+            <div class="rules-list-item">
+              <span class="text-secondary block-margin">Vincolo Nome Squadra:</span>
+              <div class="rules-info-box">
                 Deve contenere un riferimento a un <strong>progetto</strong> o una <strong>divisione Tinexta Defence</strong>.
-                <div style="margin-top: 0.5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 0.5rem; color: var(--accent-gold); font-weight: 600;">
+                <div class="rules-info-box-highlight">
                   ⚠️ Eccezione: Il nome "Tinexta Defence" può essere usato esclusivamente da chi si chiama Edoardo!
                 </div>
               </div>
@@ -161,42 +186,42 @@
         </div>
 
         <!-- Rosa e Moduli -->
-        <div class="glass-panel" style="margin-bottom: 0;">
-          <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--accent-neon); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
-            ⚽️ Rosa e Moduli
+        <div class="glass-panel">
+          <h3 class="rules-card-title">
+            <span>⚽️ Rosa e Moduli</span>
           </h3>
-          <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem;">
+          <div class="rules-list">
             <div>
-              <span class="text-secondary" style="display: block; margin-bottom: 0.5rem;">Rosa di 25 Giocatori:</span>
-              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; text-align: center;">
-                <div style="background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.02);">
-                  <div style="font-weight: 800; color: var(--accent-neon);">3</div>
-                  <div style="font-size: 0.75rem; color: var(--text-secondary);">Portieri</div>
+              <span class="text-secondary block-margin">Rosa di 25 Giocatori:</span>
+              <div class="squad-composition-grid">
+                <div class="squad-role-card">
+                  <div class="squad-role-val">3</div>
+                  <div class="squad-role-label">Portieri</div>
                 </div>
-                <div style="background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.02);">
-                  <div style="font-weight: 800; color: var(--accent-neon);">8</div>
-                  <div style="font-size: 0.75rem; color: var(--text-secondary);">Difensori</div>
+                <div class="squad-role-card">
+                  <div class="squad-role-val">8</div>
+                  <div class="squad-role-label">Difensori</div>
                 </div>
-                <div style="background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.02);">
-                  <div style="font-weight: 800; color: var(--accent-neon);">8</div>
-                  <div style="font-size: 0.75rem; color: var(--text-secondary);">Centrocampisti</div>
+                <div class="squad-role-card">
+                  <div class="squad-role-val">8</div>
+                  <div class="squad-role-label">Centrocampisti</div>
                 </div>
-                <div style="background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.02);">
-                  <div style="font-weight: 800; color: var(--accent-neon);">6</div>
-                  <div style="font-size: 0.75rem; color: var(--text-secondary);">Attaccanti</div>
+                <div class="squad-role-card">
+                  <div class="squad-role-val">6</div>
+                  <div class="squad-role-label">Attaccanti</div>
                 </div>
               </div>
             </div>
-            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.75rem;">
-              <span class="text-secondary" style="display: block; margin-bottom: 0.5rem;">Moduli Consentiti:</span>
-              <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
-                <span style="background: rgba(16, 185, 129, 0.12); color: var(--accent-neon); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">3-5-2</span>
-                <span style="background: rgba(16, 185, 129, 0.12); color: var(--accent-neon); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">3-4-3</span>
-                <span style="background: rgba(16, 185, 129, 0.12); color: var(--accent-neon); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">4-5-1</span>
-                <span style="background: rgba(16, 185, 129, 0.12); color: var(--accent-neon); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">4-4-2</span>
-                <span style="background: rgba(16, 185, 129, 0.12); color: var(--accent-neon); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">4-3-3</span>
-                <span style="background: rgba(16, 185, 129, 0.12); color: var(--accent-neon); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">5-3-2</span>
-                <span style="background: rgba(16, 185, 129, 0.12); color: var(--accent-neon); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">5-4-1</span>
+            <div class="rules-list-item">
+              <span class="text-secondary block-margin">Moduli Consentiti:</span>
+              <div class="formation-tags">
+                <span class="formation-tag">3-5-2</span>
+                <span class="formation-tag">3-4-3</span>
+                <span class="formation-tag">4-5-1</span>
+                <span class="formation-tag">4-4-2</span>
+                <span class="formation-tag">4-3-3</span>
+                <span class="formation-tag">5-3-2</span>
+                <span class="formation-tag">5-4-1</span>
               </div>
             </div>
           </div>
@@ -208,87 +233,87 @@
       <div class="rules-grid-2">
         
         <!-- Bonus e Malus -->
-        <div class="glass-panel" style="margin-bottom: 0;">
-          <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--accent-neon); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
-            📊 Bonus & Malus di Giornata
+        <div class="glass-panel">
+          <h3 class="rules-card-title">
+            <span>📊 Bonus & Malus di Giornata</span>
           </h3>
-          <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem;">
+          <div class="bonus-malus-list">
             <!-- Positive values -->
-            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+            <div class="bonus-malus-item positive">
               <span>⚽️ Gol segnato (qualsiasi ruolo)</span>
-              <strong style="color: var(--accent-neon);">+3</strong>
+              <strong class="bonus-value">+3</strong>
             </div>
-            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+            <div class="bonus-malus-item positive">
               <span>🧤 Rigore parato</span>
-              <strong style="color: var(--accent-neon);">+3</strong>
+              <strong class="bonus-value">+3</strong>
             </div>
-            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+            <div class="bonus-malus-item positive">
               <span>🛡️ Portiere imbattuto</span>
-              <strong style="color: var(--accent-neon);">+1</strong>
+              <strong class="bonus-value">+1</strong>
             </div>
-            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+            <div class="bonus-malus-item positive">
               <span>🎯 Assist</span>
-              <strong style="color: var(--accent-neon);">+1</strong>
+              <strong class="bonus-value">+1</strong>
             </div>
-            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+            <div class="bonus-malus-item positive">
               <span>🥇 Gol vittoria</span>
-              <strong style="color: var(--accent-neon);">+1</strong>
+              <strong class="bonus-value">+1</strong>
             </div>
-            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+            <div class="bonus-malus-item positive">
               <span>🥈 Gol pareggio</span>
-              <strong style="color: var(--accent-neon);">+0.5</strong>
+              <strong class="bonus-value">+0.5</strong>
             </div>
             <!-- Negative values -->
-            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+            <div class="bonus-malus-item negative">
               <span>❌ Rigore sbagliato</span>
-              <strong style="color: var(--accent-red);">-3</strong>
+              <strong class="bonus-value">-3</strong>
             </div>
-            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+            <div class="bonus-malus-item negative">
               <span>💥 Autorete</span>
-              <strong style="color: var(--accent-red);">-2</strong>
+              <strong class="bonus-value">-2</strong>
             </div>
-            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+            <div class="bonus-malus-item negative">
               <span>🥅 Gol subito (portiere)</span>
-              <strong style="color: var(--accent-red);">-1</strong>
+              <strong class="bonus-value">-1</strong>
             </div>
-            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+            <div class="bonus-malus-item negative">
               <span>🟥 Espulsione</span>
-              <strong style="color: var(--accent-red);">-1</strong>
+              <strong class="bonus-value">-1</strong>
             </div>
-            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0;">
+            <div class="bonus-malus-item negative">
               <span>🟨 Ammonizione</span>
-              <strong style="color: var(--accent-red);">-0.5</strong>
+              <strong class="bonus-value">-0.5</strong>
             </div>
           </div>
         </div>
 
         <!-- Modificatori e Bonus -->
-        <div class="glass-panel" style="margin-bottom: 0;">
-          <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--accent-neon); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
-            🛡️ Modificatore e Bonus Speciali
+        <div class="glass-panel">
+          <h3 class="rules-card-title">
+            <span>🛡️ Modificatore e Bonus Speciali</span>
           </h3>
-          <div style="display: flex; flex-direction: column; gap: 1.25rem; font-size: 0.9rem;">
+          <div class="rules-list">
             <!-- Modificatore difesa -->
             <div>
-              <span style="font-weight: 700; color: var(--accent-gold); display: block; margin-bottom: 0.35rem;">Modificatore Difesa:</span>
-              <p class="text-secondary" style="font-size: 0.85rem; margin-bottom: 0.6rem; line-height: 1.45;">
+              <span class="modifier-title">Modificatore Difesa:</span>
+              <p class="text-secondary modifier-desc">
                 Attivo schierando <strong>almeno 4 difensori</strong>. Si calcola sulla media dei voti puri (senza bonus/malus) del portiere più i 3 migliori difensori:
               </p>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; background: rgba(0,0,0,0.25); padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.8rem;">
-                <div style="border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.25rem;">Media &lt; 6.00:</div>
-                <div style="border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.25rem; font-weight: 700;">0 punti</div>
-                <div style="border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.25rem; font-weight: 700;">Media 6.00 - 6.49:</div>
-                <div style="border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.25rem; font-weight: 700; color: var(--accent-neon);">+1 punto</div>
-                <div style="border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.25rem; font-weight: 700;">Media 6.50 - 6.99:</div>
-                <div style="border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.25rem; font-weight: 700; color: var(--accent-neon);">+3 punti</div>
-                <div>Media &ge; 7.00:</div>
-                <div style="font-weight: 700; color: var(--accent-neon);">+6 punti</div>
+              <div class="modifier-def-table">
+                <div class="modifier-def-row-label">Media &lt; 6.00:</div>
+                <div class="modifier-def-row-value">0 punti</div>
+                <div class="modifier-def-row-label">Media 6.00 - 6.49:</div>
+                <div class="modifier-def-row-value highlight">+1 punto</div>
+                <div class="modifier-def-row-label">Media 6.50 - 6.99:</div>
+                <div class="modifier-def-row-value highlight">+3 punti</div>
+                <div class="modifier-def-row-label">Media &ge; 7.00:</div>
+                <div class="modifier-def-row-value highlight">+6 punti</div>
               </div>
             </div>
             <!-- Bonus fair play -->
-            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.75rem;">
-              <span style="font-weight: 700; color: var(--accent-gold); display: block; margin-bottom: 0.25rem;">Bonus Fair Play:</span>
-              <p class="text-secondary" style="font-size: 0.85rem; line-height: 1.45;">
+            <div class="rules-list-item">
+              <span class="modifier-title">Bonus Fair Play:</span>
+              <p class="text-secondary modifier-desc no-margin">
                 Viene applicato un bonus extra di <strong>+1 punto</strong> di giornata se nessun giocatore schierato (titolare o subentrato che prende voto) riceve ammonizioni o espulsioni.
               </p>
             </div>
@@ -301,43 +326,43 @@
       <div class="rules-grid-2">
         
         <!-- Campionato & Formazioni -->
-        <div class="glass-panel" style="margin-bottom: 0;">
-          <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--accent-neon); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
-            ⚙️ Regole Campionato
+        <div class="glass-panel">
+          <h3 class="rules-card-title">
+            <span>⚙️ Regole Campionato</span>
           </h3>
-          <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.9rem; line-height: 1.45;">
-            <div>
-              <strong style="color: var(--text-primary); display:block; margin-bottom:0.15rem;">Formula Campionato:</strong>
-              <p class="text-secondary" style="font-size: 0.85rem;">Classifica finale a punti totali accumulati. Si utilizzano esclusivamente le liste ufficiali e le quotazioni fornite da Fantagazzetta (Fantacalcio.it).</p>
+          <div class="rules-list">
+            <div class="rules-list-item">
+              <strong class="rules-list-item-title">Formula Campionato:</strong>
+              <p class="rules-list-item-desc">Classifica finale a punti totali accumulati. Si utilizzano esclusivamente le liste ufficiali e le quotazioni fornite da Fantagazzetta (Fantacalcio.it).</p>
             </div>
-            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.5rem;">
-              <strong style="color: var(--text-primary); display:block; margin-bottom:0.15rem;">Sostituzioni & Panchina:</strong>
-              <p class="text-secondary" style="font-size: 0.85rem;">Fino a un massimo di <strong>5 cambi effettivi</strong> a partita. Viene rispettato l'ordine stabilito in panchina, tranne nei casi in cui si renda necessario un cambio modulo automatico per coprire un'assenza.</p>
+            <div class="rules-list-item">
+              <strong class="rules-list-item-title">Sostituzioni & Panchina:</strong>
+              <p class="rules-list-item-desc">Fino a un massimo di <strong>5 cambi effettivi</strong> a partita. Viene rispettato l'ordine stabilito in panchina, tranne nei casi in cui si renda necessario un cambio modulo automatico per coprire un'assenza.</p>
             </div>
-            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.5rem;">
-              <strong style="color: var(--text-primary); display:block; margin-bottom:0.15rem;">Consegna Formazione:</strong>
-              <p class="text-secondary" style="font-size: 0.85rem;">Consentita fino a <strong>1 minuto</strong> prima dell'inizio del primo anticipo di giornata. In mancanza di consegna, verrà schierata automaticamente l'ultima formazione inviata.</p>
+            <div class="rules-list-item">
+              <strong class="rules-list-item-title">Consegna Formazione:</strong>
+              <p class="rules-list-item-desc">Consentita fino a <strong>1 minuto</strong> prima dell'inizio del primo anticipo di giornata. In mancanza di consegna, verrà schierata automaticamente l'ultima formazione inviata.</p>
             </div>
           </div>
         </div>
 
         <!-- Mercato -->
-        <div class="glass-panel" style="margin-bottom: 0;">
-          <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--accent-neon); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
-            💼 Regole Mercato
+        <div class="glass-panel">
+          <h3 class="rules-card-title">
+            <span>💼 Regole Mercato</span>
           </h3>
-          <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.9rem; line-height: 1.45;">
-            <div>
-              <strong style="color: var(--text-primary); display:block; margin-bottom:0.15rem;">Sessioni di Mercato:</strong>
-              <p class="text-secondary" style="font-size: 0.85rem;">Sono previste <strong>2 sessioni ufficiali di riparazione</strong> durante la stagione: in concomitanza con la <strong>21ª</strong> e la <strong>32ª</strong> giornata.</p>
+          <div class="rules-list">
+            <div class="rules-list-item">
+              <strong class="rules-list-item-title">Sessioni di Mercato:</strong>
+              <p class="rules-list-item-desc">Sono previste <strong>2 sessioni ufficiali di riparazione</strong> durante la stagione: in concomitanza con la <strong>21ª</strong> e la <strong>32ª</strong> giornata.</p>
             </div>
-            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.5rem;">
-              <strong style="color: var(--text-primary); display:block; margin-bottom:0.15rem;">Crediti Aggiuntivi:</strong>
-              <p class="text-secondary" style="font-size: 0.85rem;">Ogni sessione assegnerà un budget di <strong>+50 crediti extra</strong> non cumulabili (vanno spesi nella sessione stessa o andranno persi).</p>
+            <div class="rules-list-item">
+              <strong class="rules-list-item-title">Crediti Aggiuntivi:</strong>
+              <p class="rules-list-item-desc">Ogni sessione assegnerà un budget di <strong>+50 crediti extra</strong> non cumulabili (vanno spesi nella sessione stessa o andranno persi).</p>
             </div>
-            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.5rem;">
-              <strong style="color: var(--text-primary); display:block; margin-bottom:0.15rem;">Svincolati & Riaccrediti:</strong>
-              <p class="text-secondary" style="font-size: 0.85rem;">Svincolando un giocatore, si recuperano crediti pari alla quotazione di mercato iniziale stabilita da Fantagazzetta.</p>
+            <div class="rules-list-item">
+              <strong class="rules-list-item-title">Svincolati & Riaccrediti:</strong>
+              <p class="rules-list-item-desc">Svincolando un giocatore, si recuperano crediti pari alla quotazione di mercato iniziale stabilita da Fantagazzetta.</p>
             </div>
           </div>
         </div>

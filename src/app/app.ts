@@ -19,6 +19,7 @@ export class App {
 
   // Navigation: tabs are 'home' (Presentazione), 'regole' (Regole del Torneo), 'iscrizione' (Form di Iscrizione)
   activeTab = signal<'home' | 'regole' | 'iscrizione'>('home');
+  isMenuOpen = signal<boolean>(false);
 
   // Referral Calculator State
   userName = signal<string>('');
@@ -66,6 +67,7 @@ export class App {
   // Set navigation tab
   setTab(tab: 'home' | 'regole' | 'iscrizione') {
     this.activeTab.set(tab);
+    this.isMenuOpen.set(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
