@@ -121,7 +121,7 @@
             <div>
               <h3 class="section-title" style="font-size: 1.35rem; color: var(--accent-neon);">La Promo "Porta nuovi amici"</h3>
               <p class="text-secondary" style="font-size: 0.9rem; margin-top: 0.25rem;">
-                La quota di iscrizione standard è di 25€. Ma <strong>se inviti una nuova persona</strong>, sia tu che la persona invitata pagherete solo <strong>20€ a testa</strong>! La promo è cumulativa: per ogni nuovo amico che si iscrive tramite te, pagherete la quota scontata.
+                La quota di iscrizione standard è di 25€. Ma <strong>se inviti una nuova persona</strong> (che non ha mai partecipato), lei pagherà <strong>20€</strong> e tu avrai uno sconto di <strong>5€</strong> sulla tua quota! La promo è cumulativa: per ogni nuovo amico che inviti, scali 5€ dalla tua quota fino a non pagarla affatto. I nuovi arrivati pagano sempre 20€.
               </p>
             </div>
           </div>
@@ -404,6 +404,18 @@
               placeholder="Es. SuperMario99"
               [ngModel]="userNickname()" 
               (ngModelChange)="userNickname.set($event)"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="user-phone-input">Numero di telefono (opzionale)</label>
+            <input 
+              type="tel" 
+              id="user-phone-input" 
+              class="input-text" 
+              placeholder="Es. +39 333 1234567"
+              [ngModel]="userPhone()" 
+              (ngModelChange)="userPhone.set($event)"
             />
           </div>
 

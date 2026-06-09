@@ -24,6 +24,7 @@ export class App {
   // Referral Calculator State
   userName = signal<string>('');
   userNickname = signal<string>('');
+  userPhone = signal<string>('');
   userType = signal<'veteran' | 'new'>('new');
   hasReferrer = signal<boolean>(false);
   referrerName = signal<string>('');
@@ -32,17 +33,11 @@ export class App {
 
   // Referral Calculations
   userFee = computed<number>(() => {
-    // Standard fee is 25€.
-    // Discounted to 20€ if:
-    // - User is new and has a referrer (invited by a veteran/friend).
-    // - User invites at least one new person.
-    if (this.userType() === 'new' && this.hasReferrer() && this.referrerName().trim() !== '') {
-      return 20;
-    }
-    if (this.invitedFriends().length > 0) {
-      return 20;
-    }
-    return 25;
+    // Standard fee is 25€ for veterans, 20€ for new entries.
+    // Each invited friend gives a 5€ discount.
+    const baseFee = this.userType() === 'new' ? 20 : 25;
+    const discount = this.invitedFriends().length * 5;
+    return Math.max(0, baseFee - discount);
   });
 
   userSavings = computed<number>(() => {
@@ -96,6 +91,7 @@ export class App {
   emailBody = computed<string>(() => {
     const name = this.userName().trim() || '[Tuo Nome e Cognome]';
     const nickname = this.userNickname().trim() || '[Tuo Nickname su Fantacalcio.it]';
+    const phone = this.userPhone().trim();
     const typeStr = this.userType() === 'new' ? 'Nuovo Iscritto' : 'Veterano';
     
     let body = `Ciao Fanta-Defenders! ⚽️\n\n`;
@@ -103,6 +99,9 @@ export class App {
     body += `Ecco i miei dati:\n`;
     body += `- Nome e Cognome: ${name} (${typeStr})\n`;
     body += `- Nickname su Fantacalcio.it: ${nickname}\n`;
+    if (phone) {
+      body += `- Numero di Telefono: ${phone}\n`;
+    }
     
     if (this.userType() === 'new' && this.hasReferrer() && this.referrerName().trim() !== '') {
       body += `- Referral (mi ha invitato): ${this.referrerName().trim()}\n`;
@@ -113,12 +112,14 @@ export class App {
       this.invitedFriends().forEach((friend, idx) => {
         body += `${idx + 1}. Nome: ${friend.name} (Nuovo Iscritto) - Invitato da: ${name}\n`;
       });
-      body += `\nNota: in base alla promo referral, la quota per ciascuno di noi sarà di 20€ anziché 25€.\n`;
-    } else if (this.userType() === 'new' && this.hasReferrer() && this.referrerName().trim() !== '') {
-      body += `\nNota: essendo un nuovo iscritto invitato, ho diritto alla quota promozionale di 20€.\n`;
+      body += `\nNota: avendo invitato ${this.invitedFriends().length} nuovi amici, ho diritto a uno sconto di ${this.invitedFriends().length * 5}€ sulla mia quota. Gli amici invitati pagheranno la quota scontata di 20€ ciascuno.\n`;
+    } else if (this.userType() === 'new') {
+      body += `\nNota: essendo un nuovo iscritto, ho diritto alla quota di ingresso di 20€.\n`;
     } else {
-      body += `\nQuota standard prevista: 25€ (non ho referral attivi al momento).\n`;
+      body += `\nQuota standard prevista: 25€ (non ho invitato nuovi amici al momento).\n`;
     }
+    
+    body += `La mia quota finale calcolata è di ${this.userFee()}€.\n`;
     
     body += `\nAttendo le indicazioni per effettuare il pagamento della quota.\n\n`;
     body += `Grazie e buon Fanta-Defence!\n`;
