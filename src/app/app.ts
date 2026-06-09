@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 interface Friend {
   id: number;
   name: string;
+  nickname: string;
+  phone: string;
 }
 
 @Component({
@@ -29,14 +31,16 @@ export class App {
   hasReferrer = signal<boolean>(false);
   referrerName = signal<string>('');
   invitedFriends = signal<Friend[]>([]);
-  newFriendInput = signal<string>('');
+  newFriendName = signal<string>('');
+  newFriendNickname = signal<string>('');
+  newFriendPhone = signal<string>('');
 
   // Referral Calculations
   userFee = computed<number>(() => {
     // Standard fee is 25€ for veterans, 20€ for new entries.
-    // Each invited friend gives a 5€ discount.
+    // Only veterans get a 5€ discount for each invited friend.
     const baseFee = this.userType() === 'new' ? 20 : 25;
-    const discount = this.invitedFriends().length * 5;
+    const discount = this.userType() === 'veteran' ? this.invitedFriends().length * 5 : 0;
     return Math.max(0, baseFee - discount);
   });
 
@@ -69,12 +73,16 @@ export class App {
 
   // Referral Calculator methods
   addFriend() {
-    const name = this.newFriendInput().trim();
-    if (name) {
+    const name = this.newFriendName().trim();
+    const nickname = this.newFriendNickname().trim();
+    const phone = this.newFriendPhone().trim();
+    if (name && nickname) {
       const current = this.invitedFriends();
       const nextId = current.length > 0 ? Math.max(...current.map(f => f.id)) + 1 : 1;
-      this.invitedFriends.set([...current, { id: nextId, name }]);
-      this.newFriendInput.set('');
+      this.invitedFriends.set([...current, { id: nextId, name, nickname, phone }]);
+      this.newFriendName.set('');
+      this.newFriendNickname.set('');
+      this.newFriendPhone.set('');
     }
   }
 
@@ -108,11 +116,20 @@ export class App {
     }
     
     if (this.invitedFriends().length > 0) {
-      body += `\nDesidero inoltre invitare i seguenti nuovi amici per attivare la promozione referral:\n`;
+      body += `\nDesidero inoltre invitare i seguenti nuovi amici per l'iscrizione:\n`;
       this.invitedFriends().forEach((friend, idx) => {
-        body += `${idx + 1}. Nome: ${friend.name} (Nuovo Iscritto) - Invitato da: ${name}\n`;
+        let friendInfo = `- Amico ${idx + 1}: ${friend.name} (Nickname: ${friend.nickname}`;
+        if (friend.phone) {
+          friendInfo += `, Tel: ${friend.phone}`;
+        }
+        friendInfo += `)\n`;
+        body += friendInfo;
       });
-      body += `\nNota: avendo invitato ${this.invitedFriends().length} nuovi amici, ho diritto a uno sconto di ${this.invitedFriends().length * 5}€ sulla mia quota. Gli amici invitati pagheranno la quota scontata di 20€ ciascuno.\n`;
+      if (this.userType() === 'veteran') {
+        body += `\nNota: essendo un veterano e avendo invitato ${this.invitedFriends().length} nuovi amici, ho diritto a uno sconto di ${this.invitedFriends().length * 5}€ sulla mia quota. Gli amici invitati pagheranno la quota scontata di 20€ ciascuno.\n`;
+      } else {
+        body += `\nNota: i nuovi amici invitati pagheranno la quota scontata di 20€ ciascuno. Trattandosi di iscrizione da parte di un nuovo utente, non è previsto sconto sugli inviti.\n`;
+      }
     } else if (this.userType() === 'new') {
       body += `\nNota: essendo un nuovo iscritto, ho diritto alla quota di ingresso di 20€.\n`;
     } else {

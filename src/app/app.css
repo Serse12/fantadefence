@@ -1654,3 +1654,22 @@
 .modifier-def-row-value.highlight {
   color: var(--accent-neon);
 }
+
+.friend-input-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 576px) {
+  .friend-input-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .friend-input-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
