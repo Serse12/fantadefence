@@ -293,6 +293,12 @@
   -webkit-text-fill-color: transparent;
 }
 
+.emoji-text {
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+  display: inline-block;
+}
+
 .hero-lead {
   font-size: 1.15rem;
   color: var(--text-secondary);
