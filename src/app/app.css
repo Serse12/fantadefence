@@ -1209,3 +1209,17 @@
   font-size: 0.8rem;
   color: var(--text-muted);
 }
+
+/* Custom Rules Page Grid Layouts */
+.rules-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .rules-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

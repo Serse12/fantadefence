@@ -102,65 +102,221 @@
     <div *ngIf="activeTab() === 'regole'" class="animate-fade-in">
       <div class="section-header">
         <span class="section-tag">Regolamento Ufficiale</span>
-        <h2 class="section-title">Regole e Dettagli Promozione 📋</h2>
-        <p class="section-subtitle">Tutto quello che c'è da sapere sulle iscrizioni e le promozioni del Fanta-Defence 2026/27.</p>
+        <h2 class="section-title">Regole della Lega Fanta-Defence 📋</h2>
+        <p class="section-subtitle">Norme di gioco, moduli, calcolo dei punteggi e gestione del mercato per la stagione 2026/27.</p>
       </div>
 
-      <div class="promo-info-row" style="margin-bottom: 2.5rem;">
-        <div class="info-card">
-          <div class="info-card-icon">💶</div>
-          <div class="info-card-content">
-            <h4>Quota Standard: 25€</h4>
-            <p>La quota di iscrizione base applicata ai partecipanti singoli e ai veterani che non invitano nuovi iscritti.</p>
+      <!-- Grid for Game Mode and Squad Rules -->
+      <div class="rules-grid-2">
+        
+        <!-- Modalità di Gioco & Nome Squadra -->
+        <div class="glass-panel" style="margin-bottom: 0;">
+          <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--accent-neon); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+            🎮 Modalità di Gioco & Squadre
+          </h3>
+          <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem;">
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem;">
+              <span class="text-secondary">Tipo Lega:</span>
+              <strong>Listone</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem;">
+              <span class="text-secondary">Budget Iniziale:</span>
+              <strong class="text-green">300 Fanta-milioni</strong>
+            </div>
+            <div>
+              <span class="text-secondary" style="display: block; margin-bottom: 0.5rem;">Vincolo Nome Squadra:</span>
+              <div style="background: rgba(0, 0, 0, 0.25); padding: 0.75rem 1rem; border-radius: 8px; border-left: 3px solid var(--accent-green); line-height: 1.4; font-size: 0.85rem;">
+                Deve contenere un riferimento a un **progetto** o una **divisione Tinexta Defence**.
+                <div style="margin-top: 0.5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 0.5rem; color: var(--accent-gold); font-weight: 600;">
+                  ⚠️ Eccezione: Il nome "Tinexta Defence" può essere usato esclusivamente da chi si chiama Edoardo!
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="info-card">
-          <div class="info-card-icon">🔥</div>
-          <div class="info-card-content">
-            <h4>Quota Promo: 20€</h4>
-            <p>La quota agevolata per l'invitante e per la persona invitata se quest'ultima è un nuovo partecipante.</p>
+
+        <!-- Rosa e Moduli -->
+        <div class="glass-panel" style="margin-bottom: 0;">
+          <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--accent-neon); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+            ⚽️ Rosa e Moduli
+          </h3>
+          <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem;">
+            <div>
+              <span class="text-secondary" style="display: block; margin-bottom: 0.5rem;">Rosa di 25 Giocatori:</span>
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; text-align: center;">
+                <div style="background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.02);">
+                  <div style="font-weight: 800; color: var(--accent-neon);">3</div>
+                  <div style="font-size: 0.75rem; color: var(--text-secondary);">Portieri</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.02);">
+                  <div style="font-weight: 800; color: var(--accent-neon);">8</div>
+                  <div style="font-size: 0.75rem; color: var(--text-secondary);">Difensori</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.02);">
+                  <div style="font-weight: 800; color: var(--accent-neon);">8</div>
+                  <div style="font-size: 0.75rem; color: var(--text-secondary);">Centrocampisti</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.02);">
+                  <div style="font-weight: 800; color: var(--accent-neon);">6</div>
+                  <div style="font-size: 0.75rem; color: var(--text-secondary);">Attaccanti</div>
+                </div>
+              </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.75rem;">
+              <span class="text-secondary" style="display: block; margin-bottom: 0.5rem;">Moduli Consentiti:</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                <span style="background: rgba(16, 185, 129, 0.12); color: var(--accent-neon); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">3-5-2</span>
+                <span style="background: rgba(16, 185, 129, 0.12); color: var(--accent-neon); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">3-4-3</span>
+                <span style="background: rgba(16, 185, 129, 0.12); color: var(--accent-neon); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">4-5-1</span>
+                <span style="background: rgba(16, 185, 129, 0.12); color: var(--accent-neon); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">4-4-2</span>
+                <span style="background: rgba(16, 185, 129, 0.12); color: var(--accent-neon); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">4-3-3</span>
+                <span style="background: rgba(16, 185, 129, 0.12); color: var(--accent-neon); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">5-3-2</span>
+                <span style="background: rgba(16, 185, 129, 0.12); color: var(--accent-neon); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.25rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">5-4-1</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="info-card">
-          <div class="info-card-icon">⚡️</div>
-          <div class="info-card-content">
-            <h4>Promo Cumulativa</h4>
-            <p>Lo sconto si applica per ogni nuovo amico invitato. Tutti i nuovi iscritti invitati da te pagheranno 20€.</p>
-          </div>
-        </div>
+
       </div>
 
-      <!-- Detailed Rules Cards -->
-      <div class="glass-panel" style="margin-bottom: 2rem;">
-        <h3 class="section-title" style="font-size: 1.35rem; margin-bottom: 1.25rem;">Termini e Condizioni Promo Referral</h3>
-        <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; line-height: 1.5;">
-          <p>
-            📌 <strong>Chi è considerato "Nuovo"?</strong> La promozione è valida esclusivamente per i nuovi ingressi, ovvero persone che non hanno mai preso parte al Fanta-Defence in passato. L'invito di "veterani" (chi ha già partecipato in precedenza) non attiva in nessun caso lo sconto.
-          </p>
-          <p>
-            📌 <strong>Come funziona per i Veterani?</strong> Se sei un veterano e inviti un nuovo amico, pagherai anche tu la quota ridotta di 20€ anziché 25€, e il tuo amico pagherà 20€.
-          </p>
-          <p>
-            📌 <strong>Cumulabilità:</strong> Se inviti più amici, ciascuno dei tuoi amici invitati pagherà la quota promozionale di 20€. Tu manterrai la quota promozionale di 20€ (la quota non può scendere sotto i 20€).
-          </p>
+      <!-- Grid for Bonus/Malus and Modificatori -->
+      <div class="rules-grid-2">
+        
+        <!-- Bonus e Malus -->
+        <div class="glass-panel" style="margin-bottom: 0;">
+          <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--accent-neon); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+            📊 Bonus & Malus di Giornata
+          </h3>
+          <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem;">
+            <!-- Positive values -->
+            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+              <span>⚽️ Gol segnato (qualsiasi ruolo)</span>
+              <strong style="color: var(--accent-neon);">+3</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+              <span>🧤 Rigore parato</span>
+              <strong style="color: var(--accent-neon);">+3</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+              <span>🛡️ Portiere imbattuto</span>
+              <strong style="color: var(--accent-neon);">+1</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+              <span>🎯 Assist</span>
+              <strong style="color: var(--accent-neon);">+1</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+              <span>🥇 Gol vittoria</span>
+              <strong style="color: var(--accent-neon);">+1</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+              <span>🥈 Gol pareggio</span>
+              <strong style="color: var(--accent-neon);">+0.5</strong>
+            </div>
+            <!-- Negative values -->
+            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+              <span>❌ Rigore sbagliato</span>
+              <strong style="color: var(--accent-red);">-3</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+              <span>💥 Autorete</span>
+              <strong style="color: var(--accent-red);">-2</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+              <span>🥅 Gol subito (portiere)</span>
+              <strong style="color: var(--accent-red);">-1</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+              <span>🟥 Espulsione</span>
+              <strong style="color: var(--accent-red);">-1</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0.25rem 0;">
+              <span>🟨 Ammonizione</span>
+              <strong style="color: var(--accent-red);">-0.5</strong>
+            </div>
+          </div>
         </div>
+
+        <!-- Modificatori e Bonus -->
+        <div class="glass-panel" style="margin-bottom: 0;">
+          <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--accent-neon); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+            🛡️ Modificatore e Bonus Speciali
+          </h3>
+          <div style="display: flex; flex-direction: column; gap: 1.25rem; font-size: 0.9rem;">
+            <!-- Modificatore difesa -->
+            <div>
+              <span style="font-weight: 700; color: var(--accent-gold); display: block; margin-bottom: 0.35rem;">Modificatore Difesa:</span>
+              <p class="text-secondary" style="font-size: 0.85rem; margin-bottom: 0.6rem; line-height: 1.45;">
+                Attivo schierando **almeno 4 difensori**. Si calcola sulla media dei voti puri (senza bonus/malus) del portiere più i 3 migliori difensori:
+              </p>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; background: rgba(0,0,0,0.25); padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.8rem;">
+                <div style="border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.25rem;">Media &lt; 6.00:</div>
+                <div style="border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.25rem; font-weight: 700;">0 punti</div>
+                <div style="border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.25rem; font-weight: 700;">Media 6.00 - 6.49:</div>
+                <div style="border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.25rem; font-weight: 700; color: var(--accent-neon);">+1 punto</div>
+                <div style="border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.25rem; font-weight: 700;">Media 6.50 - 6.99:</div>
+                <div style="border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.25rem; font-weight: 700; color: var(--accent-neon);">+3 punti</div>
+                <div>Media &ge; 7.00:</div>
+                <div style="font-weight: 700; color: var(--accent-neon);">+6 punti</div>
+              </div>
+            </div>
+            <!-- Bonus fair play -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.75rem;">
+              <span style="font-weight: 700; color: var(--accent-gold); display: block; margin-bottom: 0.25rem;">Bonus Fair Play:</span>
+              <p class="text-secondary" style="font-size: 0.85rem; line-height: 1.45;">
+                Viene applicato un bonus extra di **+1 punto** di giornata se nessun giocatore schierato (titolare o subentrato che prende voto) riceve ammonizioni o espulsioni.
+              </p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- FAQ Section -->
-      <div class="faq-grid" style="margin-top: 0;">
-        <div class="faq-card">
-          <h4 class="faq-q">Come faccio ad iscrivermi?</h4>
-          <p class="faq-a">
-            L'iscrizione è aperta a tutti. Basta inviare una mail a <strong>info@fanta-defence.it</strong> con il tuo nome, cognome e specificare se sei un nuovo partecipante e chi ti ha eventualmente invitato (referral). Riceverai le indicazioni per effettuare il versamento della quota.
-          </p>
+      <!-- Grid for Campionato, Formazione and Mercato -->
+      <div class="rules-grid-2">
+        
+        <!-- Campionato & Formazioni -->
+        <div class="glass-panel" style="margin-bottom: 0;">
+          <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--accent-neon); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+            ⚙️ Regole Campionato
+          </h3>
+          <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.9rem; line-height: 1.45;">
+            <div>
+              <strong style="color: var(--text-primary); display:block; margin-bottom:0.15rem;">Formula Campionato:</strong>
+              <p class="text-secondary" style="font-size: 0.85rem;">Classifica finale a punti totali accumulati. Si utilizzano esclusivamente le liste ufficiali e le quotazioni fornite da Fantagazzetta (Fantacalcio.it).</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.5rem;">
+              <strong style="color: var(--text-primary); display:block; margin-bottom:0.15rem;">Sostituzioni & Panchina:</strong>
+              <p class="text-secondary" style="font-size: 0.85rem;">Fino a un massimo di **5 cambi effettivi** a partita. Viene rispettato l'ordine stabilito in panchina, tranne nei casi in cui si renda necessario un cambio modulo automatico per coprire un'assenza.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.5rem;">
+              <strong style="color: var(--text-primary); display:block; margin-bottom:0.15rem;">Consegna Formazione:</strong>
+              <p class="text-secondary" style="font-size: 0.85rem;">Consentita fino a **1 minuto** prima dell'inizio del primo anticipo di giornata. In mancanza di consegna, verrà schierata automaticamente l'ultima formazione inviata.</p>
+            </div>
+          </div>
         </div>
 
-        <div class="faq-card">
-          <h4 class="faq-q">C'è un limite di iscritti?</h4>
-          <p class="faq-a">
-            Puntiamo a raggiungere quota 100 partecipanti per garantire il montepremi finale di almeno 500€ per il primo posto. Non ci sono limiti rigidi, ma prima ti iscrivi e prima ti assicuri il posto!
-          </p>
+        <!-- Mercato -->
+        <div class="glass-panel" style="margin-bottom: 0;">
+          <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--accent-neon); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+            💼 Regole Mercato
+          </h3>
+          <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.9rem; line-height: 1.45;">
+            <div>
+              <strong style="color: var(--text-primary); display:block; margin-bottom:0.15rem;">Sessioni di Mercato:</strong>
+              <p class="text-secondary" style="font-size: 0.85rem;">Sono previste **2 sessioni ufficiali di riparazione** durante la stagione: in concomitanza con la **21ª** e la **32ª** giornata.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.5rem;">
+              <strong style="color: var(--text-primary); display:block; margin-bottom:0.15rem;">Crediti Aggiuntivi:</strong>
+              <p class="text-secondary" style="font-size: 0.85rem;">Ogni sessione assegnerà un budget di **+50 crediti extra** non cumulabili (vanno spesi nella sessione stessa o andranno persi).</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.5rem;">
+              <strong style="color: var(--text-primary); display:block; margin-bottom:0.15rem;">Svincolati & Riaccrediti:</strong>
+              <p class="text-secondary" style="font-size: 0.85rem;">Svincolando un giocatore, si recuperano crediti pari alla quotazione di mercato iniziale stabilita da Fantagazzetta.</p>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
 
